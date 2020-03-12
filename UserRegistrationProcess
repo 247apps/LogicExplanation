@@ -1,0 +1,29 @@
+Business logic
+
+function affected: updateAppraiser_userInfo, register, evaluate
+new field in table on DEV:
+SoftwareControl.UseAlternateAddress (0/1) - pls ask Bob
+new contact-type= 2 if user in group and indicator=true. Pls check with Pam.
+
+
+//todo: must check "indicator" as well (new requestfield)
+
+   if( ctrow.type == 1 && data.FGroupID == 0 ){
+	// already update Business record //Good
+   }
+   else if( ctrow.type == 2 && data.FGroupID > 0 ){ 
+		//todo: must check "indicator" as well (new requestfield)  
+		cttype2_exist = true;
+		ctuid = ctrow.uID;
+
+	}
+	
+	
+	//todo: if type=2 exists, update the record by contactUID. If not found, insert
+	if(cttype2_exist && ctuid > 0)
+		//todo mustQA use contactUID to update the record
+		
+	else //missing contactType2
+		//todo mustQA insert AlternateAddress to contacts tbl
+		ctdata.requestFields.type =2;
+		ctdata.requestFields.typeName ='AlternateFormAddress';
